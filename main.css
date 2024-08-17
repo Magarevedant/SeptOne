@@ -1,3 +1,14 @@
+body {
+  font-size: 2vw; /* Responsive font size based on viewport width */
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 4vw; /* Adjust font size for smaller screens */
+  }
+}
+
 /* Shades for background*/
 .bg-aliceblue { background-color: aliceblue; }
 .bg-antiquewhite { background-color: antiquewhite; }
@@ -139,3 +150,156 @@
 .bg-whitesmoke { background-color: whitesmoke; }
 .bg-yellow { background-color: yellow; }
 .bg-yellowgreen { background-color: yellowgreen; }
+
+.sticky-bottom {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  bottom: 0; /* Stick to the bottom of the viewport */
+  width: 100%; /* Full width of the viewport */
+  background-color: #333; /* Background color */
+  color: white; /* Text color */
+  text-align: center; /* Center text */
+  padding: 10px 0; /* Padding around the content */
+  z-index: 1000; /* Ensure it's above other content */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for better visibility */
+}
+.sticky-top {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0; /* Sticks the navbar to the top of the viewport */
+  width: 100%; /* Full width of the viewport */
+  background-color: #333; /* Background color of the navbar */
+  color: white; /* Text color */
+  padding: 10px 0; /* Padding around the content */
+  z-index: 1000; /* Ensures it stays above other content */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for better visibility */
+}
+
+.profile {
+  width: 100px; /* Size of the profile picture */
+  height: 100px; /* Size of the profile picture */
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Ensures the image covers the circle */
+  border: 2px solid #ccc; /* Optional border styling */
+  display: block; /* Ensures proper alignment */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.grid-item {
+  background-color: #f4f4f4;
+  padding: 16px;
+  border-radius: 8px;
+}
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Lift card on hover */
+}
+.zoom-container {
+  position: relative;
+  overflow: hidden; /* Hide overflow */
+}
+
+.zoom-container img {
+  transition: transform 0.3s ease; /* Smooth zoom effect */
+}
+
+.zoom-container:hover img {
+  transform: scale(1.1); /* Zoom in on hover */
+}
+.spinner {
+  border: 8px solid #f3f3f3; /* Light gray background */
+  border-top: 8px solid #3498db; /* Blue color */
+  border-radius: 50%; /* Circular shape */
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite; /* Spin animation */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.flip-card {
+  background-color: transparent;
+  width: 200px;
+  height: 300px;
+  perspective: 1000px; /* Perspective for 3D effect */
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg); /* Flip effect */
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hide the back side when facing away */
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg); /* Hide the front side when facing away */
+}
+.fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.fab:hover {
+  background-color: #0056b3;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
