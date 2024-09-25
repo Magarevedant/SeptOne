@@ -1,4 +1,4 @@
-function createTest(testJson) {
+export function createTest(testJson) {
   const container = document.getElementById('test-container'); // Assume we have a container in HTML
   const title = document.createElement('h2');
   title.textContent = testJson.title;
