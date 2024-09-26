@@ -1,5 +1,6 @@
 // testLibrary.js
 window.createTest = function(testJson) {
+  alert(JSON.stringify(testJson));
   // Create main container
   const container = document.createElement('div');
   container.id = 'test-container';
