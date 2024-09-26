@@ -214,7 +214,7 @@ function showPostTestScreen(totalScore, correctAnswers, wrongAnswers) {
     questionReviewDiv.appendChild(correctAnswerText);
 
     // Highlight if the user's answer was correct or wrong
-    if (JSON.stringify(userAnswer) === JSON.stringify(q.answer)) {
+    if (JSON.stringify(userAnswer) === JSON.stringify(q.ans)) {
       userAnswerText.style.color = 'green';  // Correct answer
     } else {
       userAnswerText.style.color = 'red';    // Wrong answer
