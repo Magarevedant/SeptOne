@@ -177,12 +177,12 @@ window.createTest = function(testJson) {
       <p>Wrong Answers: ${wrongAnswers}</p>
       <button class="submit-button" onclick="location.reload()">Take Again</button>
     `;
-  }
-}
-    });
+  
+
+    
 
     container.appendChild(questionDiv);
-  });
+  };
 
   // Timer logic
   let timeRemaining = timeLimit;
