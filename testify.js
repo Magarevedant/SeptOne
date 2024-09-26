@@ -7,10 +7,14 @@ window.createTest = function(testJson) {
 
   // Apply basic styling through JavaScript
   const styles = `
+    body {
+      background-color: ${testJson.bg || "#fff"}
+    }
     #test-container {
       margin: 20px auto;
       padding: 20px;
-      max-width: 600px;
+      width: 90vw;
+      height: 90vh;
       border: 1px solid #ccc;
       border-radius: 10px;
       background-color: #f9f9f9;
