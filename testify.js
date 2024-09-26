@@ -210,7 +210,7 @@ function showPostTestScreen(totalScore, correctAnswers, wrongAnswers) {
 
     // Display correct answer
     const correctAnswerText = document.createElement('p');
-    correctAnswerText.innerHTML = `<strong>Correct Answer:</strong> ${q.answer.join(', ')}`;
+    correctAnswerText.innerHTML = `<strong>Correct Answer:</strong> ${q.ans.join(', ')}`;
     questionReviewDiv.appendChild(correctAnswerText);
 
     // Highlight if the user's answer was correct or wrong
