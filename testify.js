@@ -1,5 +1,6 @@
 // Expose createTest globally
-window.createTest = function(testJson) {
+window.createTest = function(test) {
+  var testJson = atob(test);
   // Create main container
   const container = document.createElement('div');
   container.id = 'test-container';
