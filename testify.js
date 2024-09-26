@@ -13,7 +13,7 @@ window.createTest = function(testJson) {
     #test-container {
       margin: 20px auto;
       padding: 20px;
-      width: 90vw;
+      width: 90%;
       height: 90vh;
       border: 1px solid #ccc;
       border-radius: 10px;
@@ -35,12 +35,17 @@ window.createTest = function(testJson) {
       margin-bottom: 5px;
     }
     .timer {
-      text-align: center;
-      font-size: 18px;
-      margin-top: 20px;
-      padding: 10px;
-      color: red;
-      font-weight: bold;
+      position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffeb3b;
+    color: red;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    z-index: 9999;
     }
     .submit-button {
       display: block;
@@ -65,6 +70,8 @@ window.createTest = function(testJson) {
   // Display the pre-test screen asking if the user is ready
   container.innerHTML = `
     <h2>${testJson.title || "Test"}</h2>
+    <p>• Note that if you leave this tab during test, the test will be auto submitted</p>
+    ${testJson.note}
     <p>Are you ready to start the test?</p>
     <button id="start-test-btn" class="submit-button">Start Test</button>
   `;
