@@ -1,5 +1,5 @@
 // testLibrary.js
-export function createTest(testJson) {
+window.createTest = function(testJson) {
   // Create main container
   const container = document.createElement('div');
   container.id = 'test-container';
