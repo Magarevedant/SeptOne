@@ -1,6 +1,5 @@
-// testLibrary.js
+// Expose createTest globally
 window.createTest = function(testJson) {
-  alert(JSON.stringify(testJson));
   // Create main container
   const container = document.createElement('div');
   container.id = 'test-container';
@@ -77,7 +76,6 @@ window.createTest = function(testJson) {
     const timeLimit = (testJson.time || 30) * 60; // Default to 30 minutes if not provided
     const generalMarkingScheme = testJson.mark || [1, 0]; // Default marking: 1 for correct, 0 for wrong
     let timeRemaining = timeLimit;
-    let score = 0;
 
     // Timer logic
     const timerDiv = document.createElement('div');
@@ -177,45 +175,5 @@ window.createTest = function(testJson) {
       <p>Wrong Answers: ${wrongAnswers}</p>
       <button class="submit-button" onclick="location.reload()">Take Again</button>
     `;
-  
-
-    
-
-    container.appendChild(questionDiv);
-  };
-
-  // Timer logic
-  let timeRemaining = timeLimit;
-  const timerDiv = document.createElement('div');
-  container.appendChild(timerDiv);
-
-  const timerInterval = setInterval(() => {
-    timeRemaining--;
-    const minutes = Math.floor(timeRemaining / 60);
-    const seconds = timeRemaining % 60;
-    timerDiv.textContent = `Time left: ${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-    
-    if (timeRemaining <= 0) {
-      clearInterval(timerInterval);
-      evaluateTest(testJson);
-    }
-  }, 1000);
-
-  // Evaluation function
-  function evaluateTest(testJson) {
-    let totalScore = 0;
-
-    testJson.question.forEach((q, index) => {
-      const selectedOptions = document.querySelectorAll(`input[name="question${index}"]:checked`);
-      const selectedValues = Array.from(selectedOptions).map(option => option.value);
-
-      const isCorrect = JSON.stringify(selectedValues) === JSON.stringify(q.ans);
-      const markingScheme = q.score || generalMarkingScheme;
-
-      totalScore += isCorrect ? markingScheme[0] : markingScheme[1];
-    });
-
-    // Show final score
-    alert(`Test completed! Your score is: ${totalScore}`);
   }
-}
+};
