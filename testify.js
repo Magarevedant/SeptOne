@@ -72,7 +72,7 @@ window.createTest = function(test) {
   container.innerHTML = `
     <h2>${testJson.title || "Test"}</h2>
     <p>• Note that if you leave this tab during test, the test will be auto submitted</p>
-    ${testJson.note}
+    ${testJson.note || ""}
     <p>Are you ready to start the test?</p>
     <button id="start-test-btn" class="submit-button">Start Test</button>
   `;
