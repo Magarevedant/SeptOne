@@ -178,14 +178,59 @@ window.createTest = function(test) {
     }
   }
 
-  // Show post-test analysis
-  function showPostTestScreen(totalScore, correctAnswers, wrongAnswers) {
-    container.innerHTML = `
-      <h2>Test Completed!</h2>
+  // Show post-test analysis with correct and user answers
+function showPostTestScreen(totalScore, correctAnswers, wrongAnswers) {
+  container.innerHTML = `
+    <h2>Test Completed!</h2>
+    <div class="result">
       <p>Your Score: ${totalScore}</p>
       <p>Correct Answers: ${correctAnswers}</p>
       <p>Wrong Answers: ${wrongAnswers}</p>
-      <button class="submit-button" onclick="location.reload()">Take Again</button>
-    `;
-  }
+      <h3>Review Your Answers:</h3>
+    </div>
+  `;
+
+  // Iterate through the questions to show user answers and correct answers
+  testJson.question.forEach((q, index) => {
+    const questionReviewDiv = document.createElement('div');
+    questionReviewDiv.classList.add('question-review');
+    
+    const questionText = document.createElement('p');
+    questionText.innerHTML = `<strong>Q${index + 1}: ${q.text}</strong>`;
+    questionReviewDiv.appendChild(questionText);
+
+    // User's selected answers
+    const selectedOptions = document.querySelectorAll(`input[name="question${index}"]:checked`);
+    const userAnswer = Array.from(selectedOptions).map(option => option.value);
+
+    // Display user answer
+    const userAnswerText = document.createElement('p');
+    userAnswerText.innerHTML = `<strong>Your Answer:</strong> ${userAnswer.length > 0 ? userAnswer.join(', ') : 'No Answer'}`;
+    questionReviewDiv.appendChild(userAnswerText);
+
+    // Display correct answer
+    const correctAnswerText = document.createElement('p');
+    correctAnswerText.innerHTML = `<strong>Correct Answer:</strong> ${q.answer.join(', ')}`;
+    questionReviewDiv.appendChild(correctAnswerText);
+
+    // Highlight if the user's answer was correct or wrong
+    if (JSON.stringify(userAnswer) === JSON.stringify(q.answer)) {
+      userAnswerText.style.color = 'green';  // Correct answer
+    } else {
+      userAnswerText.style.color = 'red';    // Wrong answer
+      correctAnswerText.style.color = 'green'; // Highlight correct answer
+    }
+
+    // Append each question review to the result container
+    container.appendChild(questionReviewDiv);
+  });
+
+  // Add a "Take Again" button
+  const retakeButton = document.createElement('button');
+  retakeButton.textContent = 'Take Test Again';
+  retakeButton.classList.add('submit-button');
+  retakeButton.onclick = () => location.reload();
+  container.appendChild(retakeButton);
+}
+
 };
