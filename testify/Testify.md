@@ -23,7 +23,7 @@ Include the **Testify.js** script in your HTML file to make the `createTest` fun
 
 ```html
 <script src="path/to/testify.js"></script>
-
+```
 
 ---
 
