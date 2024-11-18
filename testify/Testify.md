@@ -1,9 +1,10 @@
+Here’s a refined and clearer version of the documentation in Markdown format:
 
-
+```markdown
 # Testify.js Documentation
 
 ## Overview
-**Testify.js** is a JavaScript library designed to create and evaluate tests in a user-friendly web interface. It processes a test JSON object, renders the test in the browser, and evaluates user responses to display a score and review.
+**Testify.js** is a JavaScript library designed to create and evaluate interactive tests in a browser. It renders tests based on a JSON input, handles user interactions, and provides post-test analysis with scores and answer reviews.
 
 ---
 
@@ -19,7 +20,7 @@
 ---
 
 ## Installation
-Include the **Testify.js** script in your HTML file to make the `createTest` function globally available.
+To use **Testify.js**, include the script in your HTML file:
 
 ```html
 <script src="path/to/testify.js"></script>
@@ -27,17 +28,13 @@ Include the **Testify.js** script in your HTML file to make the `createTest` fun
 
 ---
 
-Usage
+## Usage
+1. Create a JSON object that defines the test structure.
+2. Convert the JSON object to a Base64 string.
+3. Pass the encoded string to the `createTest` function.
 
-1. Create a base64-encoded test JSON object.
-
-
-2. Pass the encoded string to the createTest function.
-
-
-
-Example
-
+### Example Usage
+```javascript
 const testJSON = {
   title: "Sample Test",
   time: 10,
@@ -53,95 +50,65 @@ const testJSON = {
 
 const encodedTest = btoa(JSON.stringify(testJSON));
 createTest(encodedTest);
-
-
----
-
-Test JSON Schema
-
-The test JSON should follow this structure:
-
-Main Schema
-
-title: string - Test title to display. (Default: "Test")
-
-time: number - Test duration in minutes. (Default: 30)
-
-bg: string - Background color of the test interface (CSS color value). (Default: "#fff")
-
-note: string - Additional notes for the pre-test screen. (Default: "")
-
-mark: array - General marking scheme [correct, incorrect]. (Default: [1, 0])
-
-question: array - List of questions in the test.
-
-
-Question Schema
-
-Each question object should follow this structure:
-
-text: string - Question text. (Default: "Untitled")
-
-img: string - Optional image URL for the question. (Default: null)
-
-type: string - Question type ("single" or "multiple"). (Default: "single")
-
-Opt: array - List of answer options. (Default: [])
-
-ans: array - Correct answers. (Default: [])
-
-score: array - Custom marking scheme [correct, incorrect]. (Default: null)
-
-
+```
 
 ---
 
-Features
+## Test JSON Schema
+The test JSON must follow the structure below:
 
-Pre-test screen: Displays a ready prompt and notes.
+### Main Schema
+| Field      | Type     | Description                                       | Default   |
+|------------|----------|---------------------------------------------------|-----------|
+| `title`    | `string` | The title of the test.                            | `"Test"`  |
+| `time`     | `number` | Duration of the test in minutes.                  | `30`      |
+| `bg`       | `string` | Background color of the test interface (CSS value). | `"#fff"`  |
+| `note`     | `string` | Notes displayed on the pre-test screen.           | `""`      |
+| `mark`     | `array`  | General marking scheme `[correct, incorrect]`.    | `[1, 0]`  |
+| `question` | `array`  | List of questions. See the question schema below. | `[]`      |
 
-Timer: Automatically counts down and submits the test when time runs out.
-
-Single/Multiple choice questions: Supports both types.
-
-Dynamic styling: Customizable interface using JSON properties.
-
-Post-test analysis: Displays score, correct answers, and a review.
-
-
+### Question Schema
+| Field     | Type     | Description                                        | Default     |
+|-----------|----------|----------------------------------------------------|-------------|
+| `text`    | `string` | The text of the question.                          | `"Untitled"`|
+| `img`     | `string` | Optional URL of an image for the question.         | `null`      |
+| `type`    | `string` | The type of question (`"single"` or `"multiple"`). | `"single"`  |
+| `Opt`     | `array`  | The list of answer options.                        | `[]`        |
+| `ans`     | `array`  | The correct answers.                               | `[]`        |
+| `score`   | `array`  | Custom marking scheme `[correct, incorrect]`.      | `null`      |
 
 ---
 
-API Reference
+## Features
+- **Pre-Test Screen:** Displays instructions and a start button.
+- **Timer:** Automatically counts down and submits the test when time runs out.
+- **Dynamic Questions:** Supports single-choice and multiple-choice questions.
+- **Post-Test Analysis:** Displays score, correct answers, and user answers.
+- **Custom Styling:** Allows for custom background colors and notes via JSON.
 
-createTest(test)
+---
 
+## API Reference
+
+### `createTest(test)`
 Creates and displays a test interface.
 
-Parameters
-
-test: string - Base64-encoded JSON string containing the test data.
-
-
+#### Parameters
+- **`test`**: A Base64-encoded string containing the test JSON.
 
 ---
 
-Customization
-
-Change background color using the bg property in the JSON.
-
-Set custom notes for the pre-test screen with the note property.
-
-Define your marking scheme using the mark or score properties.
-
-
+## Customization
+- Set a custom background color using the `bg` property in the JSON.
+- Add notes to the pre-test screen using the `note` property.
+- Adjust the marking scheme globally with `mark` or per question with `score`.
 
 ---
 
-Examples
+## Examples
 
-Example 1: Basic Test
-
+### Example 1: Simple Test
+```javascript
 const testJSON = {
   title: "Math Quiz",
   time: 15,
@@ -158,9 +125,10 @@ const testJSON = {
 
 const encodedTest = btoa(JSON.stringify(testJSON));
 createTest(encodedTest);
+```
 
-Example 2: Multiple Choice Question
-
+### Example 2: Multiple Choice Test
+```javascript
 const testJSON = {
   title: "General Knowledge Quiz",
   time: 20,
@@ -176,4 +144,17 @@ const testJSON = {
 
 const encodedTest = btoa(JSON.stringify(testJSON));
 createTest(encodedTest);
+```
 
+---
+
+## Notes
+- The `createTest` function will automatically handle tab changes by submitting the test if the user minimizes or switches tabs.
+- Ensure the test JSON is properly structured to avoid runtime errors.
+
+---
+
+This documentation provides everything you need to get started with **Testify.js**.
+```
+
+This version is clean, well-structured, and easy to copy into a GitHub repository or Markdown editor. Let me know if you need further changes!
