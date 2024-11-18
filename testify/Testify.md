@@ -1,6 +1,4 @@
-Here’s a refined and clearer version of the documentation in Markdown format:
 
-```markdown
 # Testify.js Documentation
 
 ## Overview
